@@ -1,11 +1,3 @@
-// index.js
-// =====================================================
-// Bot Discord "Rappel de cours HETIC" (Discord.js v14)
-// Source calendrier : iCal (fichier local .ical ou URL ICS)
-// - Envoie un embed 10 minutes avant chaque cours
-// - Commande: !prochain_cours
-// - Recharge le calendrier régulièrement
-// =====================================================
 
 require('dotenv').config();
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
@@ -150,9 +142,23 @@ async function loopReminders() {
   }
 }
 
-// Comemmande !prochain_cours
+function extractGroup(roles){
+  const roleNames = roles.map(r => r.name);
+  if (roleNames.includes('Developper Web') || roleNames.includes('PGE')) {
+    return 'groupe1';
+  }
+  if (roleNames.includes('Data&AI') || roleNames.includes('Marketing')) {
+    return 'groupe2';
+  }
+  return null;
+}  
+
+// Commande !prochain_cours
 client.on('messageCreate', async (msg) => {
   if (msg.author.bot) return;
+  const roles = msg.member.roles.cache;
+  const group = extractGroup(roles);
+  console.log(group);
   const content = msg.content?.trim().toLowerCase();
   if (content === '!prochain_cours') {
     const now = dayjs().tz(TIMEZONE);
