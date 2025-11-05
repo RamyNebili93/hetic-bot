@@ -23,7 +23,7 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 });
 
-let eventsCache = [];
+let eventsCache = { groupe1: [], groupe2: [] };
 const sentKeys = new Set();
 
 
@@ -67,16 +67,7 @@ function parseSummary(summary, description = '') {
 async function loadCalendar(url, groupe1) {
   try {
     let data;
-    if (ICS_FILE) {
-      const raw = fs.readFileSync(ICS_FILE, 'utf8');
-      data = ical.sync.parseICS(raw);
-    } else if (ICS_URL) {
       data = await ical.async.fromURL(url);
-    } else {
-      console.warn('⚠️ Ni ICS_FILE ni ICS_URL définis dans .env');
-      eventsCache = [];
-      return;
-    }
 
     const items = [];
     for (const v of Object.values(data)) {

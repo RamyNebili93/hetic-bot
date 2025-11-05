@@ -8,23 +8,15 @@ dayjs.extend(utc);
 dayjs.extend(tz);
 
 const TIMEZONE = process.env.TIMEZONE || 'Europe/Paris';
-const ICS_URL  = process.env.ICS_URL;
+const ICS_URL  = process.env.ICS_URL_GROUPE1
+const ICS_URL  = process.env.ICS_URL_GROUPE2;
 const ICS_FILE = process.env.ICS_FILE; 
 
 // Fonction principale
 async function readCalendar() {
   try {
     let data;
-
-    if (ICS_FILE) {
-      const fs = require('fs');
-      const raw = fs.readFileSync(ICS_FILE, 'utf8');
-      data = ical.sync.parseICS(raw);
-    }
-
-    else {
-      data = await ical.async.fromURL(ICS_URL);
-    }
+    data = await ical.async.fromURL(ICS_URL);
 
     // événements à venir sur 7 jours
     const now = dayjs().tz(TIMEZONE);
