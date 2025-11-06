@@ -130,7 +130,10 @@ async function loopReminders() {
         )
         .setTimestamp();
 
-      await channel.send({ embeds: [embed] }).catch(e => console.error('❌ Envoi échec :', e.message));
+      // Texte visible dans la notification mobile (affiche heure / salle / cours)
+      const mobileText = `🔔 Dans 10 min — ${ev.start.format('HH:mm')} — salle ${ev.location || '—'} — ${course}`;
+
+      await channel.send({ content: mobileText, embeds: [embed] }).catch(e => console.error('❌ Envoi échec :', e.message));
       console.log(`📣 Rappel envoyé pour ${course} (${ev.start.format('YYYY-MM-DD HH:mm')})`);
     }
   }
@@ -146,6 +149,36 @@ function extractGroup(roles){
   }
   return null;
 }  
+
+// Commande de test pour envoyer un rappel simulé immédiatement
+client.on('messageCreate', async (msg) => {
+  if (msg.author.bot) return;
+  const content = msg.content?.trim().toLowerCase();
+  if (content !== '!test_rappel') return;
+
+  const channel = msg.channel;
+  const now = dayjs().tz(TIMEZONE);
+  const fakeStart = now.add(10, 'minute');
+  const course = 'Test de rappel';
+  const prof = 'Prof. Test';
+  const location = 'B101';
+
+  const embed = new EmbedBuilder()
+    .setColor(0x2ECC71)
+    .setTitle('🔔 RAPPEL (TEST) : Cours dans 10 minutes !')
+    .addFields(
+      { name: '📅 Jour',  value: fakeStart.format('dddd DD/MM'), inline: true },
+      { name: '⏰ Heure', value: fakeStart.format('HH:mm'),      inline: true },
+      { name: '🏫 Salle', value: location,                        inline: true },
+      { name: '📚 Cours', value: course,                          inline: false },
+      { name: '👨‍🏫 Prof', value: prof,                            inline: false },
+    )
+    .setTimestamp();
+
+  const mobileText = `🔔 Dans 10 min — ${fakeStart.format('HH:mm')} — salle ${location} — ${course}`;
+
+  await channel.send({ content: mobileText, embeds: [embed] }).catch(e => console.error('❌ Envoi échec (test) :', e.message));
+});
 
 // Slash command: /prochain_cours
 client.on('interactionCreate', async (interaction) => {
