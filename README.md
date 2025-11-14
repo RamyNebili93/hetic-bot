@@ -1,131 +1,89 @@
-🚀 BOT Discord – Projet Étudiant HETIC
+# 🤖 BOT Discord, Projet Étudiant HETIC
 
-Bienvenue dans le dépôt du Bot Discord que j’ai développé dans le cadre de mon apprentissage du développement web et de l’automatisation.
+Un bot Discord pensé pour améliorer la vie étudiante : rappels automatiques, commandes pratiques, et petites automatisations utiles.
+Développé en Node.js dans le cadre de ma formation à HETIC.
 
-Ce projet a deux objectifs :
+## 🎯 Description
 
-Améliorer l’expérience étudiante (rappels de cours, automatisations utiles).
+Ce bot envoie automatiquement des rappels de cours, fournit des commandes rapides pour consulter son planning, et permet d’automatiser certaines tâches du quotidien.
+Simple, utile, et évolutif.
 
-Apprendre la logique d’un bot via Node.js, Discord.js et des automatisations simples.
+## ⚙️ Fonctionnalités
 
-📚 Fonctionnalités principales
-✅ Rappels automatiques de cours
+- 🔔 Rappel automatique 10 minutes avant chaque cours
+- 🕒 Commande pour afficher le prochain cours
+- 📅 Commande pour les cours du jour
+- 📲 Commande pour tester une notification
+- 🧩 Base prête pour ajouter d’autres automatisations
+- 📚 Gestion structurée de l’emploi du temps
 
-Le bot envoie une notification 10 minutes avant chaque cours.
+## 🧠 Ce que j’ai appris
 
-Heure du cours
+- Utiliser Discord.js pour interagir avec Discord
+- Gérer des tâches automatisées (scheduler / cron)
+- Structurer un projet Node.js propre et modulaire
+- Protéger les données sensibles via dotenv
+- Travailler avec Git/GitHub pour versionner un projet
 
-Salle
+## 🚀 Prochaines évolutions
 
-Nom du cours
+- 🎨 Embeds graphiques améliorés
+- 📥 Préférences personnelles par utilisateur
+- 🧭 Dashboard web simple pour gérer les cours
+- 📚 Synchronisation avec Google Calendar
+- 🤖 Mini IA intégrée pour expliquer/résumer les cours
 
-Format de la notification personnalisée
+## ⚡ Technologies utilisées
 
-⚙️ Commandes étudiantes (selon ton code)
+- Node.js
+- Discord.js v14
+- dotenv
+- Scheduler / Cron
+- GitHub
 
-Afficher l’emploi du temps
+## 🚀 Installation & Lancement
 
-Avoir ses prochains cours
-
-Tester une notification
-
-Ping / help
-
-🔄 Automatisations étudiantes
-
-Le bot permet d’ajouter des petites automatisations simples pour la vie étudiante, par exemple :
-
-Rappels réguliers
-
-Infos pratiques
-
-Messages programmés
-
-🛠️ Technologies utilisées
-
-Node.js
-
-Discord.js
-
-Cron / Scheduler (selon ta logique de rappel)
-
-dotenv pour gérer les variables secrètes
-
-Git / GitHub pour le versioning du projet
-
-⚙️ Comment installer le projet
-1. Cloner le repo
+### 📥 1. Cloner le projet
+```txt 
 git clone https://github.com/ton-utilisateur/ton-repo.git
 cd ton-repo
-
-2. Installer les dépendances
+```
+### 📦 2. Installer les dépendances
+```txt 
 npm install
-
-3. Configurer les variables d’environnement
+```
+### 🔐 3. Configurer les variables d’environnement
 
 Créer un fichier .env :
-
+```txt 
 TOKEN=ton_token_discord
 CLIENT_ID=ton_client_id
 GUILD_ID=ton_guild_id
-
-4. Lancer le bot
+```
+### ▶️ 4. Lancer le bot
+```txt 
 node index.js
-
-
-Le bot est maintenant actif sur ton serveur Discord 🎉
-
-🔔 Comment tester les notifications
+```
+### 📲 Tester les notifications
 
 Pour tester une notification :
 
-Utilise la commande prévue dans ton bot (ex : /testnotif si tu l’as créée)
+Utiliser la commande
+```txt
+/testnotif
+```
+Ou modifier temporairement l’horaire d’un cours pour le déclencher dans une minute
 
-OU modifie temporairement l’horaire d’un cours pour qu’il se déclenche dans 1 à 2 minutes
+Vérifier que les notifications Discord sont activées sur votre téléphone
 
-Vérifie que ton téléphone a bien les notifications Discord activées
+## 👨‍💻 À propos
 
-📌 Idées d’amélioration (Roadmap)
-🟢 Faciles
+Projet réalisé dans le cadre de mon apprentissage du développement web
+1ère année – Bachelor Développement Web – HETIC
 
-Message de bienvenue aux nouveaux arrivants
-
-Commande /cours qui liste la journée
-
-Ajout d’emojis pour rendre les messages plus visuels
-
-🟡 Intermédiaires
-
-Système de préférences (activer/désactiver des rappels)
-
-Notifs personnalisées par utilisateur
-
-Liaison avec un fichier JSON pour enregistrer l’emploi du temps
-
-🔵 Avancées (mais possibles)
-
-Dashboard web pour gérer les rappels
-
-Synchronisation avec Google Calendar
-
-Bot connecté à un mini système d’IA pour expliquer les cours
-
-✨ Objectif pédagogique
-
-Ce projet m’a appris à :
-
-Manipuler Discord.js
-
-Utiliser des APIs
-
-Gérer des tâches programmées
-
-Structurer un projet Node.js
-
-Versionner un projet avec Git/GitHub
-
-👤 Auteur
-
-Ton prénom / pseudo
-Étudiant en Bachelor Développement Web – HETIC
-Passionné par l’automatisation, les bots et l’apprentissage du code.
+    ██████   ██████  ███████ 
+    ██   ██ ██    ██ ██      
+    ██████  ██    ██ █████   
+    ██      ██    ██ ██      
+    ██       ██████  ███████ 
+    H E T I C  B O T   D I S C O R D
