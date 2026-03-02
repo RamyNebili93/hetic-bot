@@ -17,6 +17,7 @@ const SLASH_COMMANDS = [
     { name: 'semaine', description: 'Envoie le planning de la semaine en MP' },
     { name: 'jour', description: 'Envoie le planning du jour en MP' },
     { name: 'demain', description: 'Envoie le résumé des cours de demain en MP' },
+    { name: 'countdown', description: 'Affiche le compte à rebours jusqu\'à la fin des cours' },
 ];
 
 /**

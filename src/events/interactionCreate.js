@@ -17,6 +17,7 @@ const { handleDemain } = require('../commands/demain');
 const { handleJour } = require('../commands/jour');
 const { handleSemaine } = require('../commands/semaine');
 const { handleProchainCours } = require('../commands/prochain_cours');
+const { handleCountdown } = require('../commands/countdown');
 
 /**
  * Table de routing : nom de commande → handler.
@@ -27,6 +28,7 @@ const COMMAND_HANDLERS = {
     jour: handleJour,
     semaine: handleSemaine,
     prochain_cours: handleProchainCours,
+    countdown: handleCountdown,
 };
 
 /**
